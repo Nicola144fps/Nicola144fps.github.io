@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset= "utf-8">
+        <meta name="viewpart" content="width=device-width, initial-scale=1">
+        <title>Gioco del pong</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+        <style>
+            html, body { margin: 0; padding: 0; background-color: "red"}
+            canvas { display: block; }
+        </style>
+
+        <script>
+            // coordinate del centro della pallina chiamata "c1"
+            let x = 380;
+            let y = 360;
+            var score = 0;
+            let rectY=0;
+
+            // diametro della pallina chiamata "c1"
+            let diameter = 40;
+
+            // velocità della pallina chiamata "c1"
+            let velocitax = 5;
+            let velocitay = 5;
+
+
+            function setup() {
+                createCanvas(800, 600);
+            }
+            function draw() {
+                background(220);
+
+                // pallina "c1" che deve rimbalzare
+                circle(x, y, diameter);
+
+                // linea da ignorare, serve solo a visualizzare il bordo
+                line(1, 599, 799, 599);
+                line(799, 1, 799, 599);
+                line(1, 1, 799, 1);
+                line(1, 1, 1, 599);
+
+
+                // formula che effettua il movimento della pallina "c1"
+                // Il movimento è dato dalla seguente formula matematica:
+                //
+                // x(t) = x(t-1) + 5
+                // y(t) = y(t-1) + 5
+                //
+                // che in informatica posso trasformare in:
+                x = x + velocitax;
+                y = y + velocitay;
+
+                // Requisito funzionale 1: rimbalzo bordo inferiore
+                // Da migliorare: "il cerchio non deve superare bordo inferiore"
+                // Migliorato, ma da raffinare ulteriormente:
+                //    se la coordinata y della pallina "c1" è maggiore di 600
+                //      allora y = y - velocita (siamo sicuri) ??
+
+                console.info(y==20);
+                console.info(x==20);
+                console.info("y è uguale a 600 ? " + y == 600);
+
+                if (y >= 580) { //giu
+                  velocitay = -5;
+                }
+                if(x>=780) { //destra
+                 velocitax =-5;
+                }
+                if (y <= 30) { //su
+                  velocitay = 5;
+                }
+
+                if(x<=30) { //sinistra
+                 velocitax = 5;
+                }
+
+                //Racchetta
+
+                rectY=mouseY;
+
+                if(rectY<=0)
+                {
+                    rectY=1;
+                }
+
+                if(rectY>=height-80)
+                {
+                    rectY=height-80;
+                }
+
+
+                rect(5,rectY,20,80);
+
+
+
+                if(y>=mouseY && y<=mouseY+80 && x<=50)
+                {
+                  velocitax=5
+                  score++;
+                }
+                fill(200, 255, 255);
+                textSize(24);
+                text("score: " + score, 10, 25);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Gioco del pong</h1>
+        <p>Pong è un videogioco sportivo bidimensionale che simula in modo molto semplificato il tennistavolo. 
+        Il giocatore controlla una racchetta sotto la forma di una barra bianca che può muovere verticalmente lungo un lato dello schermo. È possibile giocare in singolo contro il computer o a due giocatori.
+        </p>
+        <img src="https://image.winudf.com/v2/image1/Y29tLkphRGFSYS5QaW5nUG9uZzJEX3NjcmVlbl8xXzE1NjcwMjcxOTlfMDI0/screen-1.jpg?fakeurl=1&type=.jpg" width="500" height="500" alt="Immagine" loading="eager"/>
+        <h1> Requisiti: </h1> 
+        <p> La pallina è realizzata attraverso un cerchio "Verde acqua" con le cordinate Iniziali "x=50,y=50" e il diametro "50".  </p>
+        <p> L'area da disegno è "Rettangolo" "x=600,y=400".  </p>
+        <p> La velocita della pallina è "x=5,y=5".  </p>
+        <p> La pallina arrivata alla cordinata y=400 inverte la velocità sull'asse Y=-5   </p>
+        <p> La pallina arrivata alla cordinata x=400 inverte la velocità sull'asse X=-5 </p>
+        <p> La pallina arrivata alla cordinata y=0 inverte la velocità sull'asse Y=+5  </p>
+        <p> la pallina arrivata alla cordinata x=0 inverte la velocità sull'asse X=+5 </p>
+        <p> la racchetta  è realizzata con un "Rettangolo" di colore "Verde" Le cordinate Iniziali "x=5 y=30"  "H=20 L=80" </p>
+        <p> Quando x e y sono compresi tra x della racchetta e y della racchetta inverte la velocita sull'asse delle "x" </p>
+        <p> la racchetta si deve muovere solo nell'asse "Y" </p>
+        <p> La racchetta è comandata tramite mouse </p>
+        <p> Il punteggio indica ogni qualvolta la pallina tocca la racchetta </p> 
+
+        <h2>Domande per il cliente</h2>
+        <p>Come deve "reagire" l'applicazione (il gioco) quando l'utente ruota lo schermo dello smartphone? deve ruotare o restare invariato?</p>
+        <p>La modalità di gioco a tutto schermo (full-screen) è da realizzare?</p>
+        <p>La racchetta cambia mai colore nel corso del gioco?</p>
+        <p>La pallina cambia mai colore nel corso del gioco?</p>
+        <p>Il punteggio nel gioco deve rimanere invariato oppure resettarsi in un deterinato momento? se si, quando?</p>
+       
+    </body>
+<html>
