@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it">
+    <head>
+        <meta charset= "utf-8">
+        <meta name="viewpart" content="width=device-width, initial-scale=1">
+        <title>Esercizio Robot</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+        <style>
+            html, body { margin: 0; padding: 0; background-color: "red"}
+            canvas { display: block; }
+        </style>
+
+        <script>
+            function setup()
+        {
+          createCanvas(1500, 700);
+        }
+        function draw()
+        {
+            background(220);
+  //Faccia
+  fill(0, 204,204);//
+  square(mouseX - 25,mouseY - 20, 50);
+          
+          
+  fill(247, 247, 247);          
+  circle(mouseX - 10, mouseY - 10, 15);//Occhio sx
+  circle(mouseX + 10, mouseY - 10, 15);//Occhio dx
+  square(mouseX -5, mouseY, 10);//Naso
+          
+  fill(0,0,0);
+  circle(mouseX - 10, mouseY - 10, 5);//Pupilla sx
+  circle(mouseX + 10, mouseY - 10, 5);//Pupilla dx
+         
+          
+  fill(200,8,21);
+  rect(mouseX -15, mouseY + 15, 30, 10);//Bocca
+        
+        
+  fill(0,0,255);
+  line(mouseX - 20, mouseY - 20, mouseX - 20, mouseY - 40);//Antenna sx  
+  line(mouseX + 20, mouseY - 40, mouseX + 20, mouseY - 20);//Antenna dx 
+          
+  //Collo        
+  fill(200,250,0);
+  rect(mouseX - 8, mouseY + 30, 15, 20);
+          
+  //Corpo        
+  fill(0,204,204);
+  rect(mouseX - 29, mouseY + 50, 60, 90);
+        
+  //Bottoni sul corpo        
+  fill(247, 247, 247);
+  circle(mouseX , mouseY +100, 15);
+  circle(mouseX , mouseY +70, 15);
+          
+  //Mani bianche
+  fill(247, 247, 247);       
+  rect(mouseX - 109, mouseY + 50, 70, 20);
+  rect(mouseX + 41, mouseY + 50, 70, 20);
+  
+
+  fill(0, 204,204);        
+  rect(mouseX - 99, mouseY + 50, 70, 20);//Braccio sx
+  rect(mouseX + 31, mouseY + 50, 70, 20);//Braccio dx
+        
+      
+  fill(0, 204,204);        
+  rect(mouseX - 29, mouseY + 140, 20, 70);//Gamba sx
+  rect(mouseX + 11, mouseY + 140, 20, 70);//Gamba dx
+          
+          
+  fill(0,0,0);
+  circle(mouseX -20, mouseY +210, 30);//Ruota  sx
+  circle(mouseX +21, mouseY +210, 30);//Ruota dx
+          
+          
+  fill(247, 247, 247);
+  circle(mouseX -20, mouseY +210, 20);//Interno ruota sx
+  circle(mouseX +21, mouseY +210, 20);//Interno ruota dx
+        }
+      
+
+
+        </script>
+    </head>
+    <body>
+        <h1>Esercizio Robot</h1>
+        <h2>
+            <a href="index.html">Torna al menu</a>
+        </h2>
+    </body>
+<html>
